@@ -1,55 +1,18 @@
-import {useState, useEffect} from "react"
-import BotCollection from "../profiles/BotCollection"
-// import { getItems } from "../../helper/helpers"
-
-const BotArmy = ()=> {
-    const [items, setItems] = useState([])
-    // const [favoriteItems, setFavoriteItems] = useState([])
-
-    useEffect(()=>{
-        fetch("http://localhost:3001/bots")
-        .then((data)=> setItems(data))
-    }, [])
 
 
-    // const addItemToFavorite = (id)=> {
-    //     const item = items.find(item => item.id === id)
-    //     const fav = favoriteItems.find(item => item.id === id)
-    //     fav? alert("existing") :  setFavoriteItems([...favoriteItems, item])
-    // }
-
-    // const removeItemFromFavorites = (id)=> {
-    //     const newFavoriteItems = favoriteItems.filter((item) => item.id !== id)
-    //     setFavoriteItems(newFavoriteItems)
-    // }
-
-
+const BotArmy = ({item, handleOnClick})=> {
     return(
-        <div className="row">
-            <div className="col-12 mx-auto border p-4">
-                <div className="row">
-                    {
-                        // favoriteItems.map((item)=> {
-                        //     return (
-                        //         <BotCollection />
-                        //     )
-                        // })
-                    }
-                    </div>
-            </div>
-            <div className="col-12 mx-auto border p-4">
-                <div className="row">
-                {
-                    // items.map((item)=> {
-                    //     return (
-                    //         <BotCollection/>
-                    //     )
-                    // })
-                }
+        <div onClick={()=> handleOnClick(item.id)} className="card col-2 p-0 m-2">
+                <img  className="card-img-top" alt="..."/>
+                <div className="card-body">
+                    <h5 className="card-title"></h5>
+                    <p className="card-text"></p>
+                    {/* <p className="btn btn-sm text-small btn-primary btn-block m-2">View Item Details</p> */}
+                    <button className="btn btn-sm text-small btn-danger btn-block">Delete Items</button>
+
                 </div>
-            </div>
         </div>
     )
 }
 
-export default BotArmy
+export default BotArmy 
